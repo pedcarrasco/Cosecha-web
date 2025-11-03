@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Combustible</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Combustible — Vehículos</h1>
+    <div class="card">
+      <!-- FORMULARIO DE REGISTRO -->
+      <form id="entryForm">
+        <div>
+          <label for="vehicle">Vehículo</label>
+          <select id="vehicle" required></select>
+        </div>
+        <div>
+          <label for="date">Fecha</label>
+          <input id="date" type="date" required />
+        </div>
+        <div>
+          <label for="liters">Litros</label>
+          <input id="liters" type="number" step="0.01" min="0" required />
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button id="saveBtn" type="submit">Agregar</button>
+          <button id="clearBtn" type="button">Limpiar</button>
+        </div>
+      </form>
+
+      <!-- CONTROLES DE FILTRO -->
+      <div class="controls">
+        <div class="filters card">
+          <div>
+            <label for="filterType">Filtrar por</label>
+            <select id="filterType">
+              <option value="all">Todos</option>
+              <option value="day">Día</option>
+              <option value="week">Semana</option>
+              <option value="month">Mes</option>
+              <option value="year">Año</option>
+            </select>
+          </div>
+
+          <div id="filterInputs" style="display:flex;gap:8px;align-items:center"></div>
+
+          <div>
+            <label>&nbsp;</label>
+            <div style="display:flex;gap:8px">
+              <button id="applyFilter">Aplicar</button>
+              <button id="resetFilter" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="small chip">Total litros (filtro): <span id="totalLiters">0</span></div>
+          <button id="exportCsv" type="button">Exportar CSV</button>
+        </div>
+      </div>
+
+      <!-- TABLA DE REGISTROS -->
+      <div class="table-wrap card">
+        <table id="recordsTable">
+          <thead>
+            <tr><th>Fecha</th><th>Vehículo</th><th>Placa</th><th>Litros</th><th>Acciones</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
