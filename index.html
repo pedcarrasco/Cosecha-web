@@ -1,78 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Registro de Combustible</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Combustible - Agua Luchin</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Registro de Combustible — Vehículos</h1>
-    <div class="card">
-      <!-- FORMULARIO DE REGISTRO -->
-      <form id="entryForm">
-        <div>
-          <label for="vehicle">Vehículo</label>
-          <select id="vehicle" required></select>
-        </div>
-        <div>
-          <label for="date">Fecha</label>
-          <input id="date" type="date" required />
-        </div>
-        <div>
-          <label for="liters">Litros</label>
-          <input id="liters" type="number" step="0.01" min="0" required />
-        </div>
-        <div style="display:flex;gap:8px;">
-          <button id="saveBtn" type="submit">Agregar</button>
-          <button id="clearBtn" type="button">Limpiar</button>
-        </div>
-      </form>
+    <header>
+        <h1>Registro de Combustible</h1>
+        <p>Control de cargas por vehículo</p>
+    </header>
 
-      <!-- CONTROLES DE FILTRO -->
-      <div class="controls">
-        <div class="filters card">
-          <div>
-            <label for="filterType">Filtrar por</label>
-            <select id="filterType">
-              <option value="all">Todos</option>
-              <option value="day">Día</option>
-              <option value="week">Semana</option>
-              <option value="month">Mes</option>
-              <option value="year">Año</option>
-            </select>
-          </div>
+    <main>
+        <section class="form-section">
+            <h2>Agregar nuevo registro</h2>
+            <form id="fuel-form">
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" required>
 
-          <div id="filterInputs" style="display:flex;gap:8px;align-items:center"></div>
+                <label for="vehicle">Vehículo:</label>
+                <select id="vehicle" required>
+                    <option value="">Seleccione un vehículo</option>
+                    <option value="Bus Hyundai CLTX-84">Bus Hyundai CLTX-84</option>
+                    <option value="Bus Volare KJTV-90">Bus Volare KJTV-90</option>
+                    <option value="Bus Volare KJTV-89">Bus Volare KJTV-89</option>
+                    <option value="Nissan Avan RKYF-16">Nissan Avan RKYF-16</option>
+                    <option value="Jac Refina KJYW-59">Jac Refina KJYW-59</option>
+                    <option value="Dmax FPFX-73">Dmax FPFX-73</option>
+                    <option value="Toyota KYZZ-35">Toyota KYZZ-35</option>
+                    <option value="Suzuki DKBK-12">Suzuki DKBK-12</option>
+                    <option value="Suzuki DKBK-10">Suzuki DKBK-10</option>
+                </select>
 
-          <div>
-            <label>&nbsp;</label>
-            <div style="display:flex;gap:8px">
-              <button id="applyFilter">Aplicar</button>
-              <button id="resetFilter" type="button">Reset</button>
+                <label for="liters">Litros:</label>
+                <input type="number" id="liters" min="0" required>
+
+                <label for="amount">Monto ($ CLP):</label>
+                <input type="number" id="amount" min="0" required>
+
+                <button type="submit">Guardar Registro</button>
+            </form>
+        </section>
+
+        <section class="filters">
+            <h2>Filtrar Registros</h2>
+
+            <div class="filter-controls">
+                <label for="filter-type">Filtrar por:</label>
+                <select id="filter-type">
+                    <option value="all">Todos</option>
+                    <option value="day">Día</option>
+                    <option value="week">Semana</option>
+                    <option value="month">Mes</option>
+                    <option value="year">Año</option>
+                </select>
+
+                <label for="vehicle-filter">Vehículo:</label>
+                <select id="vehicle-filter">
+                    <option value="all">Todos</option>
+                    <option value="Bus Hyundai CLTX-84">Bus Hyundai CLTX-84</option>
+                    <option value="Bus Volare KJTV-90">Bus Volare KJTV-90</option>
+                    <option value="Bus Volare KJTV-89">Bus Volare KJTV-89</option>
+                    <option value="Nissan Avan RKYF-16">Nissan Avan RKYF-16</option>
+                    <option value="Jac Refina KJYW-59">Jac Refina KJYW-59</option>
+                    <option value="Dmax FPFX-73">Dmax FPFX-73</option>
+                    <option value="Toyota KYZZ-35">Toyota KYZZ-35</option>
+                    <option value="Suzuki DKBK-12">Suzuki DKBK-12</option>
+                    <option value="Suzuki DKBK-10">Suzuki DKBK-10</option>
+                </select>
+
+                <button id="filter-button">Filtrar</button>
+                <button id="export-button">Exportar CSV</button>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="actions">
-          <div class="small chip">Total litros (filtro): <span id="totalLiters">0</span></div>
-          <button id="exportCsv" type="button">Exportar CSV</button>
-        </div>
-      </div>
+        <section class="table-section">
+            <h2>Historial de Cargas</h2>
+            <table id="records-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Vehículo</th>
+                        <th>Litros</th>
+                        <th>Monto ($)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-      <!-- TABLA DE REGISTROS -->
-      <div class="table-wrap card">
-        <table id="recordsTable">
-          <thead>
-            <tr><th>Fecha</th><th>Vehículo</th><th>Placa</th><th>Litros</th><th>Acciones</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+            <div id="total-section">
+                <strong>Total Filtrado: </strong> <span id="total-amount">$0</span>
+            </div>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <footer>
+        <p>© 2025 Agua Luchin. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
