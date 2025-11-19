@@ -1,159 +1,132 @@
-/* === Estilos Generales === */
+/* ===========================
+   NEUMORPHIC DESIGN — PRO
+   =========================== */
+
+:root {
+    --bg: #e9eef3;
+    --card: #f4f7fa;
+    --text: #333;
+    --shadow-light: rgba(255, 255, 255, 0.8);
+    --shadow-dark: rgba(0, 0, 0, 0.15);
+    --primary: #4a90e2;
+}
+
+/* Modo oscuro */
+.dark-mode {
+    --bg: #1e1f22;
+    --card: #2a2c31;
+    --text: #e8e8e8;
+    --shadow-light: rgba(255,255,255,0.06);
+    --shadow-dark: rgba(0,0,0,0.6);
+}
+
 body {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: #f4f5f7;
-    color: #333;
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
-/* === Encabezado === */
-header {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 25px 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+/* ---------- Cards y Contenedores ---------- */
+
+.container, .section, #resultados, table {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light);
+    margin-bottom: 25px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #2c3e50;
-}
-
-header p {
-    margin-top: 8px;
-    color: #555;
-    font-size: 1rem;
-}
-
-/* === Contenedor Principal === */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 15px;
-    gap: 35px;
-}
-
-/* === Tarjetas de Sección === */
-section {
-    background-color: #fff;
-    width: 90%;
-    max-width: 700px;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* === Títulos de Sección === */
-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #34495e;
-    font-weight: 600;
-}
-
-/* === Formularios === */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    font-weight: 500;
-    color: #555;
-}
-
-input,
-select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 0.95rem;
+/* ---------- Inputs y Selects ---------- */
+input, select {
     width: 100%;
-    transition: all 0.2s ease;
-}
-
-input:focus,
-select:focus {
-    border-color: #0078d4;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 120, 212, 0.2);
-}
-
-/* === Botones === */
-button {
-    padding: 10px 16px;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 15px;
     border: none;
-    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow:
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    outline: none;
+    margin-bottom: 15px;
+}
+
+/* ---------- Botones ---------- */
+button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+    background: var(--card);
+    box-shadow:
+        6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+    transition: 0.2s;
 }
 
-button[type="submit"],
-#filter-button,
-#export-button {
-    background-color: #0078d4;
+button:active {
+    box-shadow:
+        inset 4px 4px 10px var(--shadow-dark),
+        inset -4px -4px 10px var(--shadow-light);
+}
+
+.btn-primary {
+    background: var(--primary);
     color: white;
+    box-shadow:
+        4px 4px 10px rgba(0,0,0,0.3),
+        -4px -4px 10px rgba(255,255,255,0.2);
 }
 
-button:hover {
-    background-color: #005fa3;
+.btn-secondary {
+    background: var(--card);
 }
 
-/* === Filtros === */
-.filters .filter-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-@media (min-width: 600px) {
-    .filters .filter-controls {
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-}
-
-/* === Tabla === */
-.table-section table {
+/* ---------- Tabla ---------- */
+table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    border-collapse: collapse.
 }
 
-.table-section th,
-.table-section td {
+table th, table td {
+    padding: 12px;
     text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ccc3;
 }
 
-.table-section th {
-    background-color: #f8f9fa;
-    color: #333;
+table th {
     font-weight: 600;
 }
 
-#total-section {
-    margin-top: 15px;
-    text-align: right;
-    font-size: 1.1rem;
-    color: #2c3e50;
+tr:hover {
+    background: rgba(0,0,0,0.05);
 }
 
-/* === Pie de Página === */
-footer {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 15px;
-    color: #777;
-    font-size: 0.9rem;
-    border-top: 1px solid #eee;
+/* ---------- Gráfico ---------- */
+.chart-container {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 
+        10px 10px 18px var(--shadow-dark),
+        -10px -10px 18px var(--shadow-light);
+    margin-top: 25px;
+}
+
+/* ---------- Responsive MOBILE ---------- */
+@media (max-width: 768px) {
+    .grid {
+        display: block;
+    }
+    
+    button {
+        width: 100%;
+        margin-bottom: 12px;
+    }
 }
